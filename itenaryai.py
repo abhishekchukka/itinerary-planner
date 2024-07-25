@@ -62,8 +62,11 @@ destination = st.text_input(label="Enter where you want to go:")
 days=st.text_input(label="Enter the number of days of the trip")
 budget = st.selectbox(label="Select your budget:", options=["Low", "Medium", "High"])
 output = generate_recipe(start, destination,days,budget)
-for i in output["events"]:
-    st.markdown(i)
+if output:
+    for i in output["events"]:
+        st.markdown(i)
+else:
+    print("Failed to generate plan")
 # guntur
 # if output:
 #     print("Ingredients:")
