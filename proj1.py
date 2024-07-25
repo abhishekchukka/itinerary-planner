@@ -2,7 +2,10 @@ import os
 import google.generativeai as genai
 
 # Configure the API key
-genai.configure(api_key="AIzaSyC2Sz-Hxn2dCJaVEWYRH2Xs88XBYn3vjSo")
+api_key=os.environ.get("AIzaSyC2Sz-Hxn2dCJaVEWYRH2Xs88XBYn3vjSo")
+if not api_key:
+    raise ValueError("GENAI_API_KEY environment variable is not set")
+genai.configure(api_key=api_key)
 
 # Create the model
 # See https://ai.google.dev/api/python/google/generativeai/GenerativeModel
