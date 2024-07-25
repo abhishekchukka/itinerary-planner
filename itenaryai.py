@@ -66,7 +66,7 @@ if output:
     for i in output["events"]:
         st.markdown(i)
 else:
-    print("Failed to generate plan")
+    st.markdown("Failed to generate plan")
 # guntur
 # if output:
 #     print("Ingredients:")
