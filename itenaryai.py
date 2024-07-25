@@ -7,7 +7,7 @@ st.title("ITINERARY PLANNER")
 def generate_itinerary(start, destination, days, budget):
     try:
         # Retrieve API key from Streamlit secrets
-        api_key = "AIzaSyC2Sz-Hxn2dCJaVEWYRH2Xs88XBYn3vjSo"
+        api_key = st.secrets["api_keys"]["google_generativeai"]
         genai.configure(api_key=api_key)
 
         # Create the model
