@@ -3,16 +3,8 @@ import json
 import streamlit as st
 st.title("ITIENARY PLANNER")
 
-def generate_recipe(start, destination ,days,budget):
-    """Generates a recipe based on given parameters.
-
-    Args:
-        food: The type of food.
-        profession: The target user's profession.
-
-    Returns:
-        A dictionary containing the recipe, or None if an error occurs.
-    """
+def generate_itinerary(start, destination ,days,budget):
+   
 
     try:
         # Configure API key
@@ -61,19 +53,17 @@ start = st.text_input(label="Enter the place you want to start your journey from
 destination = st.text_input(label="Enter where you want to go:")
 days=st.text_input(label="Enter the number of days of the trip")
 budget = st.selectbox(label="Select your budget:", options=["Low", "Medium", "High"])
-output = generate_recipe(start, destination,days,budget)
-# if output:
-for i in output["events"]:
-        st.markdown(i)
-# else:
-    # st.markdown("Failed to generate plan")
-# guntur
-# if output:
-#     print("Ingredients:")
-#     for ingredient in output["ingredients"]:
-#         print("- " + ingredient)
-#     print("\nInstructions:")
-#     for step in output["instructions"]:
-#         print("- " + step)
-# else:
-#     print("Failed to generate itenary.")
+if st.button("Generate Itinerary"):
+    if start and destination and days and budget:
+        output = generate_itinerary(start, destination, days, budget)
+        if output:
+            st.subheader("Itinerary")
+            for event in output["events"]:
+                st.markdown(event)
+            st.subheader("Notes")
+            for note in output["notes"]:
+                st.markdown(note)
+        else:
+            st.error("Failed to generate itinerary.")
+    else:
+        st.error("Please fill in all fields.")
