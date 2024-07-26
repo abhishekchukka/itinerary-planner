@@ -61,7 +61,7 @@ if st.button("Generate Itinerary"):
             st.subheader("Itinerary")
             for event in output["events"]:
                 st.markdown(event)
-            st.subheader("Notes")
+            
             for note in output["notes"]:
                 st.markdown(note)
         else:
